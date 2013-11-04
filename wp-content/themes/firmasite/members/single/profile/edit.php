@@ -49,8 +49,8 @@ if ( bp_has_profile( 'profile_group_id=' . bp_get_current_profile_group_id() ) )
 
 				<?php if ( 'textbox' == bp_get_the_profile_field_type() ) : ?>
                 	<div class="form-group">
-                        <label class="control-label col-md-2" for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
-                        <div class="col-md-10">
+                        <label class="control-label col-md-4" for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+                        <div class="col-md-8">
                             <input type="text" name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>" value="<?php bp_the_profile_field_edit_value(); ?>" <?php if ( bp_get_the_profile_field_is_required() ) : ?>aria-required="true"<?php endif; ?>/>
                             <?php firmasite_profile_field_custom_change_field_visibility(); ?>
                         </div>
@@ -59,8 +59,8 @@ if ( bp_has_profile( 'profile_group_id=' . bp_get_current_profile_group_id() ) )
 
 				<?php if ( 'textarea' == bp_get_the_profile_field_type() ) : ?>
 					<div class="form-group">
-                        <label class="control-label col-md-2" for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
-                        <div class="col-md-10">
+                        <label class="control-label col-md-4" for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+                        <div class="col-md-8">
                             <?php echo firmasite_wp_editor(bp_get_the_profile_field_edit_value(), bp_get_the_profile_field_input_name(), bp_get_the_profile_field_input_name()); ?>
                             <?php /*<textarea rows="5" cols="40" name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>" <?php if ( bp_get_the_profile_field_is_required() ) : ?>aria-required="true"<?php endif; ?>><?php bp_the_profile_field_edit_value(); ?></textarea>*/ ?> 
                             <?php firmasite_profile_field_custom_change_field_visibility(); ?>
@@ -70,8 +70,8 @@ if ( bp_has_profile( 'profile_group_id=' . bp_get_current_profile_group_id() ) )
 
 				<?php if ( 'selectbox' == bp_get_the_profile_field_type() ) : ?>
                     <div class="form-group">
-                        <label class="control-label col-md-2" for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
-                        <div class="col-md-10">
+                        <label class="control-label col-md-4" for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+                        <div class="col-md-8">
                             <select name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>" <?php if ( bp_get_the_profile_field_is_required() ) : ?>aria-required="true"<?php endif; ?>>
                                 <?php bp_the_profile_field_options(); ?>
                             </select>
@@ -83,8 +83,8 @@ if ( bp_has_profile( 'profile_group_id=' . bp_get_current_profile_group_id() ) )
 
 				<?php if ( 'multiselectbox' == bp_get_the_profile_field_type() ) : ?>
                     <div class="form-group">
-                        <label class="control-label col-md-2" for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
-                        <div class="col-md-10">
+                        <label class="control-label col-md-4" for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+                        <div class="col-md-8">
                             <select name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>" multiple="multiple" <?php if ( bp_get_the_profile_field_is_required() ) : ?>aria-required="true"<?php endif; ?>>
         
                                 <?php bp_the_profile_field_options(); ?>
@@ -105,10 +105,9 @@ if ( bp_has_profile( 'profile_group_id=' . bp_get_current_profile_group_id() ) )
 				<?php if ( 'radio' == bp_get_the_profile_field_type() ) : ?>
 
 					<div class="form-group">
-						<label class="control-label col-md-2"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
-						<div class="col-md-10">
+						<label class="control-label col-md-4"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+						<div class="col-md-8">
 							<?php bp_the_profile_field_options(); ?>
-    
                             <?php if ( !bp_get_the_profile_field_is_required() ) : ?>
     
                                 <a class="clear-value" href="javascript:clear( '<?php bp_the_profile_field_input_name(); ?>' );"><?php _e( 'Clear', "firmasite" ); ?></a>
@@ -123,8 +122,8 @@ if ( bp_has_profile( 'profile_group_id=' . bp_get_current_profile_group_id() ) )
 				<?php if ( 'checkbox' == bp_get_the_profile_field_type() ) : ?>
 
 					<div class="form-group">
-						<label class="control-label col-md-2"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
-						<div class="col-md-10">
+						<label class="control-label col-md-4"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+						<div class="col-md-8">
 							<?php bp_the_profile_field_options(); ?>
                             <?php firmasite_profile_field_custom_change_field_visibility(); ?>
                         </div>
@@ -134,8 +133,8 @@ if ( bp_has_profile( 'profile_group_id=' . bp_get_current_profile_group_id() ) )
 
 				<?php if ( 'datebox' == bp_get_the_profile_field_type() ) : ?>
 					<div class="form-group datebox">
-						<label class="control-label col-md-2" for="<?php bp_the_profile_field_input_name(); ?>_day"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
-						<div class="col-md-10 form-inline">
+						<label class="control-label col-md-4" for="<?php bp_the_profile_field_input_name(); ?>_day"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+						<div class="col-md-8 form-inline">
                         <div class="row">
                         	<div class="col-md-4">
                             <select name="<?php bp_the_profile_field_input_name(); ?>_day" id="<?php bp_the_profile_field_input_name(); ?>_day" <?php if ( bp_get_the_profile_field_is_required() ) : ?>aria-required="true"<?php endif; ?>>
