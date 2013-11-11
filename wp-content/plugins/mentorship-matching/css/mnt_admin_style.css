@@ -1,0 +1,11 @@
+#mnt_existing_matches {
+	width:100%;
+	border-collapse: collapse;
+	border:1px solid black;
+	text-align: center;
+}
+
+td {
+	width:200px;
+	border:1px solid black;
+}
