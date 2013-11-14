@@ -32,10 +32,10 @@ function mntrsp_matchmaking_activate() // Create a table for our plugin to store
 register_uninstall_hook(__FILE__, "mntrsp_matchmaking_uninstall");
 function mntrsp_matchmaking_uninstall() // Let's clean up after ourselves
 {
- 	global $wpdb;
+ // 	global $wpdb;
 
-    $table_name = $wpdb->prefix . "mntrsp_matchmaking";
-	$wpdb->query("DROP TABLE IF EXISTS $table_name");
+ //    $table_name = $wpdb->prefix . "mntrsp_matchmaking";
+	// $wpdb->query("DROP TABLE IF EXISTS $table_name");
 
 }
 

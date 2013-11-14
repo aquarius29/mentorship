@@ -6,7 +6,7 @@
  * @package BuddyPress
  * @subpackage bp-default
  */
-
+if (is_super_admin()){ 
 ?>
 
 <div class="item-list-tabs no-ajax" id="subnav" role="navigation">
@@ -74,4 +74,7 @@ do_action( 'bp_before_member_activity_content' ); ?>
 
 </div><!-- .activity -->
 
-<?php do_action( 'bp_after_member_activity_content' ); ?>
+<?php do_action( 'bp_after_member_activity_content' ); } else {
+
+	echo "This page is restricted";
+	}?>

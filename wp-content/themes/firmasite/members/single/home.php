@@ -8,7 +8,8 @@
  */
 
 global $firmasite_settings;
-get_header( 'buddypress' ); ?>
+get_header( 'buddypress' ); 
+if (is_super_admin()){ ?>
 
 	<div id="primary" class="content-area <?php echo $firmasite_settings["layout_primary_class"]; ?>">
 		<div class="padder">
@@ -76,5 +77,12 @@ get_header( 'buddypress' ); ?>
 		</div><!-- .padder -->
 	</div><!-- #content -->
 
-<?php get_sidebar( 'buddypress' ); ?>
+<?php 
+
+} else {
+
+	echo "This page is restricted";
+	}
+
+get_sidebar( 'buddypress' ); ?>
 <?php get_footer( 'buddypress' ); ?>

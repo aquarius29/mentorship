@@ -8,7 +8,9 @@
  */
 
 global $firmasite_settings;
-get_header( 'buddypress' ); ?>
+get_header( 'buddypress' ); 
+
+?>
 
 	<?php do_action( 'bp_before_directory_members_page' ); ?>
 
@@ -16,6 +18,8 @@ get_header( 'buddypress' ); ?>
 		<div class="padder">
 
 		<?php do_action( 'bp_before_directory_members' ); ?>
+
+		<?php if (is_super_admin()) { ?>
 
 		<form action="" method="post" id="members-directory-form" class="dir-form">
 
@@ -90,5 +94,8 @@ get_header( 'buddypress' ); ?>
 
 	<?php do_action( 'bp_after_directory_members_page' ); ?>
 
+<?php }else {
+	echo "Restricted Access";
+} ?>
 <?php get_sidebar( 'buddypress' ); ?>
 <?php get_footer( 'buddypress' ); ?>
