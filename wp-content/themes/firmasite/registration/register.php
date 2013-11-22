@@ -1,6 +1,25 @@
 <?php global $firmasite_settings;
 get_header( 'buddypress' ); ?>
 
+						<?php
+						// this part is added to determine if the user wants to register ar mentor or as student! 
+						// by reading the variable we pass in the url. If the form==mentor then mentor for will be shown otherwise student's form is shown
+						global $wp_query;
+						if (isset($wp_query->query_vars['form']))
+						{
+							if ($wp_query->query_vars['form']=='mentor'){
+								$group = 6;
+								$siteuser = "<b>MENTOR</b>";
+							}else{
+								$group = 4;
+								$siteuser = "<b>STUDENT</b>";
+							}
+						}else{
+							$group = 4;							
+							$siteuser = "<b>STUDENT</b>";
+						}
+						?>
+
 	<div id="primary" class="content-area <?php echo $firmasite_settings["layout_primary_class"]; ?>">
 		<div class="padder">
 
@@ -21,12 +40,11 @@ get_header( 'buddypress' ); ?>
 
 			<?php if ( 'request-details' == bp_get_current_signup_step() ) : ?>
 
-				<h2><?php _e( 'Register for IT Mentorship Program', "firmasite" ); ?></h2>
+				<h2><?php _e( 'Register as '.$siteuser, "firmasite" ); ?></h2>
 
 				<?php do_action( 'template_notices' ); ?>
 
-				<p><?php _e( 'Fill in the inforation here <br>
-				Registering for this site is easy, just fill in the fields below and we\'ll get a new account set up for you in no time.', "firmasite" ); ?></p>
+				<p><?php _e( 'Answer the questions below to participate in the program. We will keep your information safe.', "firmasite" ); ?></p>
 
 				<?php do_action( 'bp_before_account_details_fields' ); ?>
 
@@ -68,22 +86,6 @@ get_header( 'buddypress' ); ?>
 
 						<?php /* Use the profile field loop to render input fields for the 'base' profile field group */ ?>
 						
-						<?php
-						// this part is added to determine if the user wants to register ar mentor or as student! 
-						// by reading the variable we pass in the url. If the form==mentor then mentor for will be shown otherwise student's form is shown
-						global $wp_query;
-						if (isset($wp_query->query_vars['form']))
-						{
-							if ($wp_query->query_vars['form']=='mentor'){
-								$group = 6;
-							}else{
-								$group = 4;
-							}
-						}else{
-							$group = 4;							
-						}
-						?>
-
 						<?php if ( bp_is_active( 'xprofile' ) ) : if ( bp_has_profile( 'profile_group_id='.$group ) ) : while ( bp_profile_groups() ) : bp_the_profile_group(); ?>
 
 						<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
