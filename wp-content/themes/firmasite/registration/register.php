@@ -53,7 +53,6 @@ get_header( 'buddypress' ); ?>
 					<?php /***** Basic Account Details ******/ ?>
 
 					<h4 class="page-header"><?php _e( 'Account Details', "firmasite" ); ?></h4>
-
 					<label for="signup_username"><?php _e( 'Username', "firmasite" ); ?> <?php _e( '(required)', "firmasite" ); ?></label>
 					<?php do_action( 'bp_signup_username_errors' ); ?>
 					<input type="text" name="signup_username" id="signup_username" value="<?php bp_signup_username_value(); ?>" />
@@ -82,8 +81,8 @@ get_header( 'buddypress' ); ?>
 
 					<div class="register-section" id="profile-details-section">
 
-						<h4 class="page-header"><?php _e( 'Matching questions', "firmasite" ); ?></h4>
-
+						<h4 class="page-header"><?php _e( 'Profile questions', "firmasite" ); ?></h4>
+						<p>Most of these questions will help us find a suitable match for you.</p>
 						<?php /* Use the profile field loop to render input fields for the 'base' profile field group */ ?>
 						
 						<?php if ( bp_is_active( 'xprofile' ) ) : if ( bp_has_profile( 'profile_group_id='.$group ) ) : while ( bp_profile_groups() ) : bp_the_profile_group(); ?>
@@ -95,6 +94,10 @@ get_header( 'buddypress' ); ?>
 								<?php if ( 'textbox' == bp_get_the_profile_field_type() ) : ?>
 
 									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+                					<?php // the additional description of the question ?>
+                					<?php if ( do_action( 'bp_after_blog_details_fields' ) ) : ?>
+									    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+								    <?php endif ?>
 									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
 									<input type="text" name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>" value="<?php bp_the_profile_field_edit_value(); ?>" />
 
@@ -103,6 +106,10 @@ get_header( 'buddypress' ); ?>
 								<?php if ( 'textarea' == bp_get_the_profile_field_type() ) : ?>
 
 									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+                					<?php // the additional description of the question ?>
+                					<?php if ( do_action( 'bp_after_blog_details_fields' ) ) : ?>
+									    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+								    <?php endif ?>
 									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
 									<textarea rows="5" cols="40" name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_edit_value(); ?></textarea>
 
@@ -111,6 +118,10 @@ get_header( 'buddypress' ); ?>
 								<?php if ( 'selectbox' == bp_get_the_profile_field_type() ) : ?>
 
 									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+                					<?php // the additional description of the question ?>
+                					<?php if ( do_action( 'bp_after_blog_details_fields' ) ) : ?>
+									    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+								    <?php endif ?>
 									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
 									<select name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>">
 										<?php bp_the_profile_field_options(); ?>
@@ -121,6 +132,10 @@ get_header( 'buddypress' ); ?>
 								<?php if ( 'multiselectbox' == bp_get_the_profile_field_type() ) : ?>
 
 									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+                					<?php // the additional description of the question ?>
+                					<?php if ( do_action( 'bp_after_blog_details_fields' ) ) : ?>
+									    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+								    <?php endif ?>
 									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
 									<select name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>" multiple="multiple">
 										<?php bp_the_profile_field_options(); ?>
@@ -158,7 +173,11 @@ get_header( 'buddypress' ); ?>
 
 									<div class="datebox">
 										<label for="<?php bp_the_profile_field_input_name(); ?>_day"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
-										<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
+                    					<?php // the additional description of the question ?>
+	                					<?php if ( do_action( 'bp_after_blog_details_fields' ) ) : ?>
+										    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+									    <?php endif ?>
+    									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
 
 										<select name="<?php bp_the_profile_field_input_name(); ?>_day" id="<?php bp_the_profile_field_input_name(); ?>_day">
 											<?php bp_the_profile_field_options( 'type=day' ); ?>
@@ -173,9 +192,11 @@ get_header( 'buddypress' ); ?>
 										</select>
 									</div>
 
-								<?php endif; ?>
-								
-								<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) ) : ?>
+								<?php endif; ?>		
+								<?php // the following if loop is removed - it was the possibility to change the visibility of the fields by the user. 
+								      // something that is not needed in the registration form. 
+								?>		
+								<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) and false) : ?>
 									<p class="field-visibility-settings-toggle" id="field-visibility-settings-toggle-<?php bp_the_profile_field_id() ?>">
 										<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', "firmasite" ), bp_get_the_profile_field_visibility_level_label() ) ?> <a href="#" class="visibility-toggle-link">Change</a>
 									</p>
@@ -190,17 +211,16 @@ get_header( 'buddypress' ); ?>
 										<a class="field-visibility-settings-close" href="#"><?php _e( 'Close', "firmasite" ) ?></a>
 										
 									</div>
-								<?php else : ?>
+								<?php //else : ?>
 									<p class="field-visibility-settings-notoggle" id="field-visibility-settings-toggle-<?php bp_the_profile_field_id() ?>">
 										<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', "firmasite" ), bp_get_the_profile_field_visibility_level_label() ) ?>
 									</p>			
-								<?php endif ?>
+								<?php endif ?> 
 
 
-								<?php do_action( 'bp_custom_profile_edit_fields' ); ?>
-
-								<p class="description"><?php bp_the_profile_field_description(); ?></p>
-
+								<?php 
+								// this code is moved to under each question's label to be displayed above the text field. 
+								// do_action( 'bp_custom_profile_edit_fields' ); ?>
 							</div>
 
 						<?php endwhile; ?>
