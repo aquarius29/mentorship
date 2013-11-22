@@ -279,7 +279,7 @@ get_header( 'buddypress' ); ?>
 				<?php do_action( 'bp_before_registration_submit_buttons' ); ?>
 
 				<div class="submit">
-					<input type="submit" class="btn  btn-primary" name="signup_submit" id="signup_submit" value="<?php _e( 'Complete Sign Up', "firmasite" ); ?>" />
+					<input type="submit" class="btn  btn-primary" name="signup_submit" id="signup_submit" value="<?php _e( 'Complete Registration', "firmasite" ); ?>" />
 				</div>
 
 				<?php do_action( 'bp_after_registration_submit_buttons' ); ?>
