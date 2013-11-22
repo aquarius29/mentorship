@@ -95,9 +95,10 @@ get_header( 'buddypress' ); ?>
 
 									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
                 					<?php // the additional description of the question ?>
-                					<?php if ( do_action( 'bp_after_blog_details_fields' ) ) : ?>
-									    <p class="description"><?php bp_the_profile_field_description(); ?></p>
-								    <?php endif ?>
+	                					<?php do_action( 'bp_after_blog_details_fields' );
+	                					if( bp_get_the_profile_field_description() ) : ?>
+										    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+									    <?php endif ?>
 									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
 									<input type="text" name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>" value="<?php bp_the_profile_field_edit_value(); ?>" />
 
@@ -107,9 +108,10 @@ get_header( 'buddypress' ); ?>
 
 									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
                 					<?php // the additional description of the question ?>
-                					<?php if ( do_action( 'bp_after_blog_details_fields' ) ) : ?>
-									    <p class="description"><?php bp_the_profile_field_description(); ?></p>
-								    <?php endif ?>
+	                					<?php do_action( 'bp_after_blog_details_fields' );
+	                					if( bp_get_the_profile_field_description() ) : ?>
+										    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+									    <?php endif ?>
 									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
 									<textarea rows="5" cols="40" name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_edit_value(); ?></textarea>
 
@@ -119,9 +121,10 @@ get_header( 'buddypress' ); ?>
 
 									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
                 					<?php // the additional description of the question ?>
-                					<?php if ( do_action( 'bp_after_blog_details_fields' ) ) : ?>
-									    <p class="description"><?php bp_the_profile_field_description(); ?></p>
-								    <?php endif ?>
+	                					<?php do_action( 'bp_after_blog_details_fields' );
+	                					if( bp_get_the_profile_field_description() ) : ?>
+										    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+									    <?php endif ?>
 									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
 									<select name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>">
 										<?php bp_the_profile_field_options(); ?>
@@ -133,9 +136,10 @@ get_header( 'buddypress' ); ?>
 
 									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
                 					<?php // the additional description of the question ?>
-                					<?php if ( do_action( 'bp_after_blog_details_fields' ) ) : ?>
-									    <p class="description"><?php bp_the_profile_field_description(); ?></p>
-								    <?php endif ?>
+	                					<?php do_action( 'bp_after_blog_details_fields' );
+	                					if( bp_get_the_profile_field_description() ) : ?>
+										    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+									    <?php endif ?>
 									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
 									<select name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>" multiple="multiple">
 										<?php bp_the_profile_field_options(); ?>
@@ -174,7 +178,8 @@ get_header( 'buddypress' ); ?>
 									<div class="datebox">
 										<label for="<?php bp_the_profile_field_input_name(); ?>_day"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
                     					<?php // the additional description of the question ?>
-	                					<?php if ( do_action( 'bp_after_blog_details_fields' ) ) : ?>
+	                					<?php do_action( 'bp_after_blog_details_fields' );
+	                					if( bp_get_the_profile_field_description() ) : ?>
 										    <p class="description"><?php bp_the_profile_field_description(); ?></p>
 									    <?php endif ?>
     									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
