@@ -48,7 +48,7 @@ public function widget( $args, $instance ) {
 	<p><a href="/mentorship/register?form=mentor"><button type="button" class="btn btn-warning">as MENTOR</button></a>
 	<a href="/mentorship/register?form=student"><button type="button" class="btn btn-danger">as STUDENT</button></a></p>
         <p>If you have an account:<br>
-	<a href="/mentorship/wp-login.php?action=login"><button type="button" class="btn btn-success">Login</button></a></p>	
+	<a href="/wp-login.php?action=login"><button type="button" class="btn btn-success">Login</button></a></p>	
 	<?php }
 	echo $args['after_widget'];
 }
