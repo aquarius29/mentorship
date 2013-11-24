@@ -6,7 +6,7 @@
  * @package BuddyPress
  * @subpackage bp-default
  */
-if (is_super_admin()){ 
+if (is_super_admin() || bp_is_my_profile()) { 
 ?>
 
 <div class="item-list-tabs no-ajax" id="subnav" role="navigation">

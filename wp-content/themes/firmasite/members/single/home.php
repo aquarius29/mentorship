@@ -9,7 +9,7 @@
 
 global $firmasite_settings;
 get_header( 'buddypress' ); 
-if (is_super_admin()){ ?>
+if (is_super_admin() || bp_is_my_profile()){ ?>
 
 	<div id="primary" class="content-area <?php echo $firmasite_settings["layout_primary_class"]; ?>">
 		<div class="padder">
