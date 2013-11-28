@@ -87,6 +87,17 @@ add_action( 'widgets_init', 'wpb_load_widget' );
 /* End of the mentorship widget */
 
 
+/*  Plugin to disable admin bar for non-admin users */
+
+add_action('after_setup_theme', 'remove_admin_bar');
+
+function remove_admin_bar() {
+	if (!current_user_can('administrator') && !is_admin()) {
+	  show_admin_bar(false);
+	}
+}
+
+/* end of the plugin to disable admin bar for non-admin users */
 
 /* Stop Adding Functions Below this Line */
 ?>
