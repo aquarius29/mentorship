@@ -36,13 +36,16 @@ public function widget( $args, $instance ) {
 
 	// This is where you run the code and display the output
 	if ( is_user_logged_in() ){ 
+		//user is logged in:
 		global $bp;
-
-//		echo __( 'Helloooo, there, we know you!', 'wpb_widget_domain' );	
 		$member_id = $bp->loggedin_user->id;	?>
-		<a href="<?php echo bp_core_get_user_domain( $member_id ) ?>" title="<?php echo $bp->loggedin_user->fullname ?>">
+		<p><a href="<?php echo bp_core_get_user_domain( $member_id ) ?>" title="<?php echo $bp->loggedin_user->fullname ?>">
 		<?php echo bp_core_fetch_avatar ( array( 'item_id' => $member_id, 'judy_type(array)e' => 'full' ) ) ?></a> 
 		Hello <?php echo $bp->loggedin_user->fullname ?>
+		</p>
+		<p>
+		<a href="<?php $bp->loggedin_user->domain?>/edit">Edit your profile </a>
+		</p>
 	<?php }else{ ?>
 	<p>Register to participate in the IT Mentorship Program:</p>
 	<p><a href="/mentorship/register?form=mentor"><button type="button" class="btn btn-warning">as MENTOR</button></a>
