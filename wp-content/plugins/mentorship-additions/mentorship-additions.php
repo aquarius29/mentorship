@@ -44,7 +44,7 @@ public function widget( $args, $instance ) {
 		Hello <?php echo $bp->loggedin_user->fullname ?>
 		</p>
 		<p>
-		<a href="<?php echo bp_core_get_user_domain( $member_id ) ?>/profile/edit">Edit your profile </a>
+		<a href="<?php echo bp_core_get_user_domain( $member_id ) ?>profile/edit">Edit your profile </a>
 		</p>
 	<?php }else{ ?>
 	<p>Register to participate in the IT Mentorship Program:</p>
