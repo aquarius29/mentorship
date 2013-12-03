@@ -8,14 +8,14 @@ get_header( 'buddypress' ); ?>
 						if (isset($wp_query->query_vars['form']))
 						{
 							if ($wp_query->query_vars['form']=='mentor'){
-								$group = 6;
+								$groupp = 6;
 								$siteuser = "<b>MENTOR</b>";
 							}else{
-								$group = 4;
+								$groupp = 4;
 								$siteuser = "<b>STUDENT</b>";
 							}
 						}else{
-							$group = 4;							
+							$groupp = 4;							
 							$siteuser = "<b>STUDENT</b>";
 						}
 						?>
@@ -74,6 +74,7 @@ get_header( 'buddypress' ); ?>
 				<?php do_action( 'bp_after_account_details_fields' ); ?>
 
 				<?php /***** Extra Profile Details ******/ ?>
+				<?php //*********************************addition to the registration ***************************** ?>
 
 				<?php if ( bp_is_active( 'xprofile' ) ) : ?>
 
@@ -81,11 +82,11 @@ get_header( 'buddypress' ); ?>
 
 					<div class="register-section" id="profile-details-section">
 
-						<h4 class="page-header"><?php _e( 'Profile questions', "firmasite" ); ?></h4>
+						<h4 class="page-header"><?php _e( 'Personal info', "firmasite" ); ?></h4>
 						<p>Most of these questions will help us find a suitable match for you.</p>
 						<?php /* Use the profile field loop to render input fields for the 'base' profile field group */ ?>
 						
-						<?php if ( bp_is_active( 'xprofile' ) ) : if ( bp_has_profile( 'profile_group_id='.$group ) ) : while ( bp_profile_groups() ) : bp_the_profile_group(); ?>
+						<?php if ( bp_is_active( 'xprofile' ) ) : if ( bp_has_profile( 'profile_group_id=1') ) : while ( bp_profile_groups() ) : bp_the_profile_group();?>
 
 						<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
 
@@ -230,7 +231,175 @@ get_header( 'buddypress' ); ?>
 
 						<?php endwhile; ?>
 
-						<input type="hidden" name="signup_profile_field_ids" id="signup_profile_field_ids" value="<?php bp_the_profile_group_field_ids(); ?>" />
+						<input type="hidden" name="signup_profile_field_ids" id="signup_profile_field_ids" value="<?php $form1_fields=bp_get_the_profile_group_field_ids(); echo $form1_fields ?>" />
+
+						<?php endwhile; endif; endif; ?>
+
+					</div><!-- #profile-details-section -->
+
+					<?php // do_action( 'bp_after_signup_profile_fields' ); ?>
+
+				<?php endif; ?>
+
+
+				<?php // end of the addition ************************************************************************?>
+
+				<?php if ( bp_is_active( 'xprofile' ) ) : ?>
+
+					<?php do_action( 'bp_before_signup_profile_fields' ); ?>
+
+					<div class="register-section" id="profile-details-section">
+
+						<h4 class="page-header"><?php _e( 'Profile questions', "firmasite" ); ?></h4>
+						<p>Most of these questions will help us find a suitable match for you.</p>
+						<?php /* Use the profile field loop to render input fields for the 'base' profile field group */ ?>
+						
+						<?php if ( bp_is_active( 'xprofile' ) ) : if ( bp_has_profile( 'profile_group_id='.$groupp) ) : while ( bp_profile_groups() ) : bp_the_profile_group();?>
+
+						<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
+
+							<div class="editfield">
+
+								<?php if ( 'textbox' == bp_get_the_profile_field_type() ) : ?>
+
+									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+                					<?php // the additional description of the question ?>
+	                					<?php do_action( 'bp_after_blog_details_fields' );
+	                					if( bp_get_the_profile_field_description() ) : ?>
+										    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+									    <?php endif ?>
+									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
+									<input type="text" name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>" value="<?php bp_the_profile_field_edit_value(); ?>" />
+
+								<?php endif; ?>
+
+								<?php if ( 'textarea' == bp_get_the_profile_field_type() ) : ?>
+
+									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+                					<?php // the additional description of the question ?>
+	                					<?php do_action( 'bp_after_blog_details_fields' );
+	                					if( bp_get_the_profile_field_description() ) : ?>
+										    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+									    <?php endif ?>
+									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
+									<textarea rows="5" cols="40" name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_edit_value(); ?></textarea>
+
+								<?php endif; ?>
+
+								<?php if ( 'selectbox' == bp_get_the_profile_field_type() ) : ?>
+
+									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+                					<?php // the additional description of the question ?>
+	                					<?php do_action( 'bp_after_blog_details_fields' );
+	                					if( bp_get_the_profile_field_description() ) : ?>
+										    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+									    <?php endif ?>
+									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
+									<select name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>">
+										<?php bp_the_profile_field_options(); ?>
+									</select>
+
+								<?php endif; ?>
+
+								<?php if ( 'multiselectbox' == bp_get_the_profile_field_type() ) : ?>
+
+									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+                					<?php // the additional description of the question ?>
+	                					<?php do_action( 'bp_after_blog_details_fields' );
+	                					if( bp_get_the_profile_field_description() ) : ?>
+										    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+									    <?php endif ?>
+									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
+									<select name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>" multiple="multiple">
+										<?php bp_the_profile_field_options(); ?>
+									</select>
+
+								<?php endif; ?>
+
+								<?php if ( 'radio' == bp_get_the_profile_field_type() ) : ?>
+
+									<div class="radio">
+										<span class=""><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></span>
+
+										<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
+										<?php bp_the_profile_field_options(); ?>
+
+										<?php if ( !bp_get_the_profile_field_is_required() ) : ?>
+											<a class="clear-value" href="javascript:clear( '<?php bp_the_profile_field_input_name(); ?>' );"><?php _e( 'Clear', "firmasite" ); ?></a>
+										<?php endif; ?>
+									</div>
+
+								<?php endif; ?>
+
+								<?php if ( 'checkbox' == bp_get_the_profile_field_type() ) : ?>
+
+									<div class="checkbox">
+										<span class=""><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></span>
+
+										<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
+										<?php bp_the_profile_field_options(); ?>
+									</div>
+
+								<?php endif; ?>
+
+								<?php if ( 'datebox' == bp_get_the_profile_field_type() ) : ?>
+
+									<div class="datebox">
+										<label for="<?php bp_the_profile_field_input_name(); ?>_day"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', "firmasite" ); ?><?php endif; ?></label>
+                    					<?php // the additional description of the question ?>
+	                					<?php do_action( 'bp_after_blog_details_fields' );
+	                					if( bp_get_the_profile_field_description() ) : ?>
+										    <p class="description"><?php bp_the_profile_field_description(); ?></p>
+									    <?php endif ?>
+    									<?php do_action( 'bp_' . bp_get_the_profile_field_input_name() . '_errors' ); ?>
+
+										<select name="<?php bp_the_profile_field_input_name(); ?>_day" id="<?php bp_the_profile_field_input_name(); ?>_day">
+											<?php bp_the_profile_field_options( 'type=day' ); ?>
+										</select>
+
+										<select name="<?php bp_the_profile_field_input_name(); ?>_month" id="<?php bp_the_profile_field_input_name(); ?>_month">
+											<?php bp_the_profile_field_options( 'type=month' ); ?>
+										</select>
+
+										<select name="<?php bp_the_profile_field_input_name(); ?>_year" id="<?php bp_the_profile_field_input_name(); ?>_year">
+											<?php bp_the_profile_field_options( 'type=year' ); ?>
+										</select>
+									</div>
+
+								<?php endif; ?>		
+								<?php // the following if loop is removed - it was the possibility to change the visibility of the fields by the user. 
+								      // something that is not needed in the registration form. 
+								?>		
+								<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) and false) : ?>
+									<p class="field-visibility-settings-toggle" id="field-visibility-settings-toggle-<?php bp_the_profile_field_id() ?>">
+										<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', "firmasite" ), bp_get_the_profile_field_visibility_level_label() ) ?> <a href="#" class="visibility-toggle-link">Change</a>
+									</p>
+									
+									<div class="field-visibility-settings" id="field-visibility-settings-<?php bp_the_profile_field_id() ?>">
+										<fieldset>
+											<legend><?php _e( 'Who can see this field?', "firmasite" ) ?></legend>
+										
+											<?php bp_profile_visibility_radio_buttons() ?>
+										
+										</fieldset>
+										<a class="field-visibility-settings-close" href="#"><?php _e( 'Close', "firmasite" ) ?></a>
+										
+									</div>
+								<?php //else : ?>
+									<p class="field-visibility-settings-notoggle" id="field-visibility-settings-toggle-<?php bp_the_profile_field_id() ?>">
+										<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', "firmasite" ), bp_get_the_profile_field_visibility_level_label() ) ?>
+									</p>			
+								<?php endif ?> 
+
+
+								<?php 
+								// this code is moved to under each question's label to be displayed above the text field. 
+								// do_action( 'bp_custom_profile_edit_fields' ); ?>
+							</div>
+
+						<?php endwhile; ?>
+
+						<input type="hidden" name="signup_profile_field_ids" id="signup_profile_field_ids" value="<?php echo $form1_fields.",";bp_the_profile_group_field_ids(); ?>" />
 
 						<?php endwhile; endif; endif; ?>
 
