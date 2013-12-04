@@ -39,6 +39,14 @@ http://codex.wordpress.org/Child_Themes
 }
 .caption .hero-link{display:inline-block;vertical-align:middle}
 
+/*footer for timeline*/
+
+
+#text-3{
+width:780px;
+}
+
+
 /* wp-styles */
 .aligncenter{display:block;margin:0 auto}
 .alignleft{float:left}
