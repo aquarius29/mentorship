@@ -30,7 +30,7 @@ if ( !defined('FIRMASITE_POWEREDBY') )
  * You dont need to define latin. For latin only you can define as empty: define('FIRMASITE_SUBSETS', '');
  */
 if ( !defined('FIRMASITE_SUBSETS') )
-	define('FIRMASITE_SUBSETS', 'latin-ext');
+	define('FIRMASITE_SUBSETS', '');
 
 
 // If you define this as false, theme will remove showcase posts from home page loop
