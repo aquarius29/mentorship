@@ -28,6 +28,7 @@ function __construct() {
 
 // Creating widget front-end
 public function widget( $args, $instance ) {
+	if( !is_user_logged_in() ) {   
 	$title = apply_filters( 'widget_title', $instance['title'] );	
 	// before and after widget arguments are defined by themes
 	echo $args['before_widget'];
@@ -50,10 +51,10 @@ public function widget( $args, $instance ) {
 	<p>Register to participate in the IT Mentorship Program:</p>
 	<p><a href="/mentorship/register?form=mentor"><button type="button" class="btn btn-warning">as MENTOR</button></a>
 	<a href="/mentorship/register?form=student"><button type="button" class="btn btn-danger">as STUDENT</button></a></p>
-        <p>If you have an account:<br>
-	<a href="/wp-login.php?action=login"><button type="button" class="btn btn-success">Login</button></a></p>	
+        <p>Or login if you have an account already.<br>
 	<?php }
 	echo $args['after_widget'];
+	}
 }
 		
 // Widget Backend 

@@ -13,7 +13,7 @@
 	<span class="lwa-title-sub" style="display:none"><?php echo __( 'Hi', 'login-with-ajax' ) . " " . $current_user->display_name  ?></span>
 	<table>
 		<tr>
-			<td class="avatar" class="lwa-avatar">
+			<td class="avatar" class="lwa-avatar" style="width:20%">
 				<?php echo get_avatar( $current_user->ID, $size = '50' );  ?>
 			</td>
 			<td class="lwa-info">
@@ -35,7 +35,7 @@
 					<a id="wp-logout" href="<?php echo wp_logout_url() ?>"><?php esc_html_e( 'Log Out' ,'login-with-ajax') ?></a><br />
 					<?php
 					//Blog Admin
-					if( current_user_can('list_users') ) {
+					if( current_user_can('list_users') and false ) {
 						?>
 						<a href="<?php echo get_admin_url(); ?>"><?php esc_html_e("blog admin", 'login-with-ajax'); ?></a>
 						<?php
