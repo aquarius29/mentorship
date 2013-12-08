@@ -40,7 +40,6 @@
 						<?php endif; ?>
                         <?php if ( get_option('users_can_register') && !empty($lwa_data['registration']) ) : ?>
 						<br />
-						<a href="<?php echo esc_attr(LoginWithAjax::$url_register); ?>" class="lwa-links-register lwa-links-modal"><?php esc_html_e('Register','login-with-ajax') ?></a>
                         <?php endif; ?>
                     </td>
                 </tr>
