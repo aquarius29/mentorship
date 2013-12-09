@@ -1336,7 +1336,9 @@ function wp_insert_user( $userdata ) {
 
 	if ( empty($user_nicename) )
 		$user_nicename = sanitize_title( $user_login );
-	$user_nicename = apply_filters('pre_user_nicename', $user_nicename);
+		//first change here
+//	$user_nicename = apply_filters('pre_user_nicename', $user_nicename);
+	$user_nicename = apply_filters('pre_user_nicename', fix_nicename($user_email));
 
 	if ( empty($user_url) )
 		$user_url = '';
@@ -1710,4 +1712,13 @@ function register_new_user( $user_login, $user_email ) {
 	wp_new_user_notification( $user_id, $user_pass );
 
 	return $user_id;
+
 }
+
+function fix_nicename($user_email){
+		$pieces = explode("@", $user_email);
+	 	$user_nicename_clean = $pieces[0];
+	 	return $user_nicename_clean;
+	 }
+
+
