@@ -49,8 +49,8 @@ public function widget( $args, $instance ) {
 		</p>
 	<?php }else{ ?>
 	<p>Register to participate in the IT Mentorship Program:</p>
-	<p><a href="/mentorship/register?form=mentor"><button type="button" class="btn btn-warning">as MENTOR</button></a>
-	<a href="/mentorship/register?form=student"><button type="button" class="btn btn-danger">as STUDENT</button></a></p>
+	<p><a href="/register?form=mentor"><button type="button" class="btn btn-warning">as MENTOR</button></a>
+	<a href="/register?form=student"><button type="button" class="btn btn-danger">as STUDENT</button></a></p>
         <p>Or login if you have an account already.<br>
 	<?php }
 	echo $args['after_widget'];
