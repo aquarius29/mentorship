@@ -9,14 +9,14 @@ get_header( 'buddypress' ); ?>
 						{
 							if ($wp_query->query_vars['form']=='mentor'){
 								$groupp = 6;
-								$siteuser = "<b>MENTOR</b>";
+								$siteuser = "MENTOR";
 							}else{
 								$groupp = 4;
-								$siteuser = "<b>STUDENT</b>";
+								$siteuser = "STUDENT";
 							}
 						}else{
 							$groupp = 4;							
-							$siteuser = "<b>STUDENT</b>";
+							$siteuser = "STUDENT";
 						}
 						?>
 
@@ -40,7 +40,7 @@ get_header( 'buddypress' ); ?>
 
 			<?php if ( 'request-details' == bp_get_current_signup_step() ) : ?>
 
-				<h2><?php _e( 'Register as '.$siteuser, "firmasite" ); ?></h2>
+				<h2><?php _e( 'Register as <b>'.$siteuser .'</b>', "firmasite" ); ?></h2>
 
 				<?php do_action( 'template_notices' ); ?>
 
@@ -400,7 +400,7 @@ get_header( 'buddypress' ); ?>
 						<?php endwhile; ?>
 
 						<input type="hidden" name="signup_profile_field_ids" id="signup_profile_field_ids" value="<?php echo $form1_fields.",";bp_the_profile_group_field_ids(); ?>" />
-
+						<input type="hidden" id="role" name="role" value="<?php echo strtolower($siteuser) ?>" >
 						<?php endwhile; endif; endif; ?>
 
 					</div><!-- #profile-details-section -->

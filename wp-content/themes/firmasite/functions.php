@@ -55,3 +55,25 @@ require_once ( get_template_directory() . '/functions/init.php');	// Initial the
 
 /* DONT REMOVE THOSE LINES ABOVE */
 
+
+/**
+ * Snippets to register user role during registration of the user! 
+ *
+ *
+ * created for mentorship program site
+ */
+
+add_action('user_register', 'register_role');
+function register_role($user_id, $password="", $meta=array()) {
+ 
+   $userdata = array();
+   $userdata['ID'] = $user_id;
+   $userdata['role'] = $_POST['role'];
+ 
+   // allow if a role is selected and is one of 'mentor' or 'student' otherwise the user will be registered as subscriber!
+   if ( $userdata['role'] and ($userdata['role'] == 'student' or $userdata['role'] =='mentor') ){
+      wp_update_user($userdata);
+   }
+
+}
+
